@@ -22,6 +22,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		System.out.println("hello world4");
+		System.out.println("hello again")
+		System.out.println("hello for the third time");
 		launch(args);
 	}
 }
