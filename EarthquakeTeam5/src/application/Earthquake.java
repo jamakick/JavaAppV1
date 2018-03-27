@@ -56,6 +56,94 @@ public class Earthquake {
 		this.magSource = magSource;
 	}
 	
+	public String getTime() {
+		return time;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public double getDepth() {
+		return depth;
+	}
+
+	public double getMag() {
+		return mag;
+	}
+
+	public String getMagType() {
+		return magType;
+	}
+
+	public int getNst() {
+		return nst;
+	}
+
+	public double getGap() {
+		return gap;
+	}
+
+	public double getdMin() {
+		return dMin;
+	}
+
+	public double getRms() {
+		return rms;
+	}
+
+	public String getNet() {
+		return net;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getUpdated() {
+		return updated;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public double getHorError() {
+		return horError;
+	}
+
+	public double getDepthError() {
+		return depthError;
+	}
+
+	public double getMagError() {
+		return magError;
+	}
+
+	public int getMagNst() {
+		return magNst;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public String getLocSource() {
+		return locSource;
+	}
+
+	public String getMagSource() {
+		return magSource;
+	}
+
 	@Override
 	public String toString() {
 		return "Earthquake: \nTime: " + time + "\n Latitude: " + latitude + "\n Longitude: " + longitude +
@@ -77,6 +165,4 @@ public class Earthquake {
 				0.17f, 22, false, "ci", "ci");		
 		System.out.println(earth1);	
 	}
-	
-
 }
