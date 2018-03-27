@@ -158,11 +158,11 @@ public class Earthquake {
 	
 	public static void main(String[] args) {		
 		// Test Two Earthquakes
-		Earthquake earth1  = new Earthquake("2018-03-08T17:58:27.780Z", 33.4915f,
-				-116.783f, 4.24f, 0.76f, "ml", 25, 48f, 0.08307f, 0.18f,
-				"ci", "ci37890583", "2018-03-08T18:02:00.885Z",
-				"9km NE of Aguanga, CA", "earthquake", 0.27f, 0.59f,
-				0.17f, 22, false, "ci", "ci");		
-		System.out.println(earth1);	
+//		Earthquake earth1  = new Earthquake("2018-03-08T17:58:27.780Z", 33.4915f,
+//				-116.783f, 4.24f, 0.76f, "ml", 25, 48f, 0.08307f, 0.18f,
+//				"ci", "ci37890583", "2018-03-08T18:02:00.885Z",
+//				"9km NE of Aguanga, CA", "earthquake", 0.27f, 0.59f,
+//				0.17f, 22, false, "ci", "ci");		
+//		System.out.println(earth1);	
 	}
 }
