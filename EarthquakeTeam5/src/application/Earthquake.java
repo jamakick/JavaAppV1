@@ -29,7 +29,7 @@ public class Earthquake {
 	}
 	
 	public Earthquake (String time, double latitude, double longitude, double depth, double mag, String magType,
-			int nst, double gap, double dMin, double rns, String net, String id, String updated, String place,
+			int nst, double gap, double dMin, double rms, String net, String id, String updated, String place,
 			String type, double horError, double depthError, double magError, 
 			int magNst, boolean status, String locSource, String magSource) {
 		this.time = time;
