@@ -23,7 +23,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-			EarthquakeCollection.getFileInformation();
+			//EarthquakeCollection.getFileInformation();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

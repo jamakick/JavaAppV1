@@ -7,7 +7,18 @@ import java.util.ArrayList;
 
 public class EarthquakeCollection {
 	
-	public static void getFileInformation(){
+//	@Override
+//	public String toString() {
+//		return "Earthquake: \n Time: " + time + "\n Latitude: " + latitude + "\n Longitude: " + longitude +
+//				"\n Depth: " + depth + "\n Magnitude: " + mag + "\n Magnitude Type: " + magType + "\n Number of Stations Contributing to Location: " + nst
+//				 + "\n Gap Between Stations: " + gap + "\n Distance from Epicenter to Nearest Station: " + dMin + "\n Accuracy of Predicted Arrival Times to Observed Arrival Times: " + rms
+//				 + "\n Network Contributor ID: " + net + "\n Earthquake ID: " + id + "\n Updated Date/Time: " + updated + "\n Location Earthquake Occured: " + place
+//				 + "\n Type of Event: " + type + "\n Horizontal Error (km): " + horError + "\n Depth Error (km): " + depthError
+//				 + "\n Magnitude Error (km): " + magError + "\n Amount of Stations that Determined Magnitude: " + magNst + "\n Reviewed Status: " + status
+//				 + "\n Location Source: " + locSource + "\n Magnitude Source: " + magSource;
+//	}
+	
+	public static ArrayList<Earthquake> getFileInformation(){
 		
 		String time;
 		double latitude;
@@ -192,6 +203,9 @@ public class EarthquakeCollection {
                  }
             }
         }
+        
+        return earthquakeList;
+        
         //prints all earthquake objects
 //        for (Earthquake e:earthquakeList)
 //        	System.out.println(e);
