@@ -192,5 +192,9 @@ public class EarthquakeCollection {
                  }
             }
         }
+        //prints all earthquake objects
+//        for (Earthquake e:earthquakeList)
+//        	System.out.println(e);
+//        	System.out.println();
     }
 }
