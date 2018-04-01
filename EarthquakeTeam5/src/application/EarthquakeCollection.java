@@ -7,8 +7,9 @@ import java.util.ArrayList;
 
 public class EarthquakeCollection {
 	
+	static ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
+	
 	public static void getFileInformation(){
-		
 		String time;
 		double latitude;
 		double longitude;
@@ -38,7 +39,6 @@ public class EarthquakeCollection {
 
         String strLine = "";
         
-        ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
 
         try {
             br = new BufferedReader(new FileReader(strFile));
@@ -186,15 +186,19 @@ public class EarthquakeCollection {
             if (br != null) {
                 try {
                     br.close();
-                    System.out.print("Finished Parsing");
+                    System.out.println("Finished Parsing");
                  } catch (IOException e) {
                     e.printStackTrace();
                  }
             }
         }
+       
         //prints all earthquake objects
 //        for (Earthquake e:earthquakeList)
 //        	System.out.println(e);
 //        	System.out.println();
     }
+	public static ArrayList<Earthquake> getList(){
+		return earthquakeList;
+	}
 }

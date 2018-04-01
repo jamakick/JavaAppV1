@@ -24,6 +24,7 @@ public class Main extends Application {
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			EarthquakeCollection.getFileInformation();
+			commandLine.main(null);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
