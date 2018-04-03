@@ -21,10 +21,109 @@ public class EarthquakeCollection {
 		return "Number of Earthquakes: " + earthquakes.size();
 	}
 	
+	public static ArrayList<Earthquake> SearchByStatus(String status) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> statusMatch = new ArrayList<Earthquake>();
+		
+		if(status.equals("reviewed")) {
+			for (int i = 0; i < earthquakes.size(); i++) {
+				
+				boolean quakePlace = earthquakes.get(i).isStatus();
+				
+				if(quakePlace) {
+						statusMatch.add(earthquakes.get(i));
+				}
+			}
+		}
+			
+
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			boolean quakePlace = earthquakes.get(i).isStatus();
+			
+			if(quakePlace) {
+					placeMatch.add(earthquakes.get(i));
+			}
+		}
+		return placeMatch;
+	}
 	
+	public static ArrayList<Earthquake> SearchByPlace(String place) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> placeMatch = new ArrayList<Earthquake>();
+
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			String quakePlace = earthquakes.get(i).getPlace();
+			
+			if(quakePlace.equals(place)) {
+					placeMatch.add(earthquakes.get(i));
+			}
+		}
+		return placeMatch;
+	}
 	
+	public static ArrayList<Earthquake> SearchByMagType(String magType) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> magTypeMatch = new ArrayList<Earthquake>();
+
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			String quakeMagType = earthquakes.get(i).getMagType();
+			
+			if(quakeMagType.equals(magType)) {
+					magTypeMatch.add(earthquakes.get(i));
+			}
+		}
+		return magTypeMatch;
+	}
 	
+	public static ArrayList<Earthquake> SearchByMag(String mag1, String mag2) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> magBetween = new ArrayList<Earthquake>();
+		
+		double magNum1 = Double.parseDouble(mag1);
+		double magNum2 = Double.parseDouble(mag2);
+
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			double quakeMag = earthquakes.get(i).getMag();
+			
+			if(quakeMag >= magNum1 && quakeMag <= magNum2) {
+					magBetween.add(earthquakes.get(i));
+			}
+		}
+		return magBetween;
+	}
 	
+	public static ArrayList<Earthquake> SearchByDepth(String depth1, String depth2) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> depthBetween = new ArrayList<Earthquake>();
+		
+		double depthNum1 = Double.parseDouble(depth1);
+		double depthNum2 = Double.parseDouble(depth2);
+
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			double quakeDepth = earthquakes.get(i).getDepth();
+			
+			if(quakeDepth >= depthNum1 && quakeDepth <= depthNum2) {
+					depthBetween.add(earthquakes.get(i));
+			}
+		}
+		return depthBetween;
+	}
+		
 	public static ArrayList<Earthquake> SearchByLoc(String lat1, String long1, String lat2, String long2) {
 		
 		ArrayList<Earthquake> earthquakes = getFileInformation();
@@ -38,21 +137,17 @@ public class EarthquakeCollection {
 		
 		for (int i = 0; i < earthquakes.size(); i++) {
 			
-			double latString = earthquakes.get(i).getLatitude();
-			double longString = earthquakes.get(i).getLongitude();
+			double quakeLat = earthquakes.get(i).getLatitude();
+			double quakeLong = earthquakes.get(i).getLongitude();
 			
-			if(latString >= latNum1 && latString <= latNum2) {
-				if(longString <= longNum1 && longString >= longNum2) {
+			if(quakeLat >= latNum1 && quakeLat <= latNum2) {
+				if(quakeLong <= longNum1 && quakeLong >= longNum2) {
 					locBetween.add(earthquakes.get(i));
 				}
 			}
-			
 		}
-		
 		return locBetween;
-		
 	}
-	
 	
 	public static ArrayList<Earthquake> SearchByDate(String string1, String string2) {
 		
@@ -87,13 +182,10 @@ public class EarthquakeCollection {
 			
 			if (timeDate.after(date1) && timeDate.before(date2))
 				//System.out.println(timeDate + " is between " + date1 + " and " + date2);
-				datesBetween.add(earthquakes.get(i));
-			
+				datesBetween.add(earthquakes.get(i));	
 		}
-		
 		return datesBetween;
 	}
-	
 	
 	public static ArrayList<Earthquake> getFileInformation(){
 		
