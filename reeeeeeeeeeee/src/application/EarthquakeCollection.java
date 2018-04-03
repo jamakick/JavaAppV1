@@ -1,5 +1,6 @@
 package application;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -52,6 +53,7 @@ public class EarthquakeCollection {
         ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
 
         try {
+        	System.out.println(new File(".").getAbsolutePath());
             br = new BufferedReader(new FileReader(strFile));
 
             //pull the headers out since they are the first row
@@ -204,11 +206,11 @@ public class EarthquakeCollection {
             }
         }
         
-        return earthquakeList;
-        
         //prints all earthquake objects
-//        for (Earthquake e:earthquakeList)
-//        	System.out.println(e);
-//        	System.out.println();
+        for (Earthquake e:earthquakeList)
+        	System.out.println(e);
+        	System.out.println();
+        	
+        return earthquakeList;
     }
 }
