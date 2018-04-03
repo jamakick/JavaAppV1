@@ -3,20 +3,64 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EarthquakeCollection {
 	
+	//you can't override the to string of an array list apparently, I will just make a new function
 //	@Override
 //	public String toString() {
-//		return "Earthquake: \n Time: " + time + "\n Latitude: " + latitude + "\n Longitude: " + longitude +
-//				"\n Depth: " + depth + "\n Magnitude: " + mag + "\n Magnitude Type: " + magType + "\n Number of Stations Contributing to Location: " + nst
-//				 + "\n Gap Between Stations: " + gap + "\n Distance from Epicenter to Nearest Station: " + dMin + "\n Accuracy of Predicted Arrival Times to Observed Arrival Times: " + rms
-//				 + "\n Network Contributor ID: " + net + "\n Earthquake ID: " + id + "\n Updated Date/Time: " + updated + "\n Location Earthquake Occured: " + place
-//				 + "\n Type of Event: " + type + "\n Horizontal Error (km): " + horError + "\n Depth Error (km): " + depthError
-//				 + "\n Magnitude Error (km): " + magError + "\n Amount of Stations that Determined Magnitude: " + magNst + "\n Reviewed Status: " + status
-//				 + "\n Location Source: " + locSource + "\n Magnitude Source: " + magSource;
+//		return "Number of Earthquakes: " + earthquakes.size();
 //	}
+	
+	public static String arrayListToString(ArrayList<Earthquake> earthquakes) {
+		return "Number of Earthquakes: " + earthquakes.size();
+	}
+	
+	
+	public static ArrayList<Earthquake> SearchByDate(String string1, String string2) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> datesBetween = new ArrayList<Earthquake>();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Date date1 = new Date();
+		Date date2 = new Date();
+		
+		try {
+			date1 = sdf.parse(string1);
+			date2 = sdf.parse(string2);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			String timeString = earthquakes.get(i).getTime().substring(0, 10);
+			
+			Date timeDate = new Date();
+			
+			try {
+				timeDate = sdf.parse(timeString);;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			if (timeDate.after(date1) && timeDate.before(date2))
+				//System.out.println(timeDate + " is between " + date1 + " and " + date2);
+				datesBetween.add(earthquakes.get(i));
+			
+		}
+		
+		return datesBetween;
+	}
+	
 	
 	public static ArrayList<Earthquake> getFileInformation(){
 		
@@ -52,7 +96,6 @@ public class EarthquakeCollection {
         ArrayList<Earthquake> earthquakeList = new ArrayList<Earthquake>();
 
         try {
-        	System.out.println(new File(".").getAbsolutePath());
             br = new BufferedReader(new FileReader(strFile));
 
             //pull the headers out since they are the first row
@@ -198,7 +241,7 @@ public class EarthquakeCollection {
             if (br != null) {
                 try {
                     br.close();
-                    System.out.print("Finished Parsing");
+                    //System.out.println("Finished Parsing");
                  } catch (IOException e) {
                     e.printStackTrace();
                  }
@@ -206,9 +249,9 @@ public class EarthquakeCollection {
         }
         
         //prints all earthquake objects
-        for (Earthquake e:earthquakeList)
-        	System.out.println(e);
-        	System.out.println();
+//        for (Earthquake e:earthquakeList)
+//        	System.out.println(e);
+//        	System.out.println();
         	
         return earthquakeList;
     }
