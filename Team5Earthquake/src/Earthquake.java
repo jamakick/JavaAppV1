@@ -1,7 +1,7 @@
 import java.util.Comparator;
 
 public class Earthquake {
-	
+
 	private String time = "";
 	private double latitude = 0f;
 	private double longitude = 0f;
@@ -24,10 +24,10 @@ public class Earthquake {
 	private boolean status = true;
 	private String locSource = "";
 	private String magSource = "";
-	
+
 	public Earthquake() {
 	}
-	
+
 	public Earthquake (String time, double latitude, double longitude, double depth, double mag, String magType,
 			int nst, double gap, double dMin, double rms, String net, String id, String updated, String place,
 			String type, double horError, double depthError, double magError, 
@@ -55,7 +55,7 @@ public class Earthquake {
 		this.locSource = locSource;
 		this.magSource = magSource;
 	}
-	
+
 	public String getTime() {
 		return time;
 	}
@@ -148,41 +148,52 @@ public class Earthquake {
 	public String toString() {
 		return "\nEarthquake: \n Time: " + time + "\n Latitude: " + latitude + "\n Longitude: " + longitude +
 				"\n Depth: " + depth + "\n Magnitude: " + mag + "\n Magnitude Type: " + magType + "\n Number of Stations Contributing to Location: " + nst
-				 + "\n Gap Between Stations: " + gap + "\n Distance from Epicenter to Nearest Station: " + dMin + "\n Accuracy of Predicted Arrival Times to Observed Arrival Times: " + rms
-				 + "\n Network Contributor ID: " + net + "\n Earthquake ID: " + id + "\n Updated Date/Time: " + updated + "\n Location Earthquake Occured: " + place
-				 + "\n Type of Event: " + type + "\n Horizontal Error (km): " + horError + "\n Depth Error (km): " + depthError
-				 + "\n Magnitude Error (km): " + magError + "\n Amount of Stations that Determined Magnitude: " + magNst + "\n Reviewed Status: " + status
-				 + "\n Location Source: " + locSource + "\n Magnitude Source: " + magSource;
+				+ "\n Gap Between Stations: " + gap + "\n Distance from Epicenter to Nearest Station: " + dMin + "\n Accuracy of Predicted Arrival Times to Observed Arrival Times: " + rms
+				+ "\n Network Contributor ID: " + net + "\n Earthquake ID: " + id + "\n Updated Date/Time: " + updated + "\n Location Earthquake Occured: " + place
+				+ "\n Type of Event: " + type + "\n Horizontal Error (km): " + horError + "\n Depth Error (km): " + depthError
+				+ "\n Magnitude Error (km): " + magError + "\n Amount of Stations that Determined Magnitude: " + magNst + "\n Reviewed Status: " + status
+				+ "\n Location Source: " + locSource + "\n Magnitude Source: " + magSource;
 	}
 
-	
-	
+
+
 	public static void main(String[] args) {		
 		// Test Two Earthquakes
-//		Earthquake earth1  = new Earthquake("2018-03-08T17:58:27.780Z", 33.4915f,
-//				-116.783f, 4.24f, 0.76f, "ml", 25, 48f, 0.08307f, 0.18f,
-//				"ci", "ci37890583", "2018-03-08T18:02:00.885Z",
-//				"9km NE of Aguanga, CA", "earthquake", 0.27f, 0.59f,
-//				0.17f, 22, false, "ci", "ci");		
-//		System.out.println(earth1);	
+		//		Earthquake earth1  = new Earthquake("2018-03-08T17:58:27.780Z", 33.4915f,
+		//				-116.783f, 4.24f, 0.76f, "ml", 25, 48f, 0.08307f, 0.18f,
+		//				"ci", "ci37890583", "2018-03-08T18:02:00.885Z",
+		//				"9km NE of Aguanga, CA", "earthquake", 0.27f, 0.59f,
+		//				0.17f, 22, false, "ci", "ci");		
+		//		System.out.println(earth1);	
 	}
 
 	public static Comparator<Earthquake> EquDepthComparator = new Comparator<Earthquake>() {
-	public int compare(Earthquake arg0, Earthquake arg1) {
-		// TODO Auto-generated method stub
-		if (arg0.getDepth() < arg1.getDepth()) return -1;
-        if (arg0.getDepth() > arg1.getDepth()) return 1;
-		return 0;
+		public int compare(Earthquake arg0, Earthquake arg1) {
+			// TODO Auto-generated method stub
+			if (arg0.getDepth() < arg1.getDepth()) return -1;
+			if (arg0.getDepth() > arg1.getDepth()) return 1;
+			return 0;
 		}
 	};
-	
+
 	public static Comparator<Earthquake> EquMagComparator = new Comparator<Earthquake>() {
 		public int compare(Earthquake arg0, Earthquake arg1) {
 			// TODO Auto-generated method stub
 			if (arg0.getMag() < arg1.getMag()) return -1;
-	        if (arg0.getMag() > arg1.getMag()) return 1;
+			if (arg0.getMag() > arg1.getMag()) return 1;
 			return 0;
-			}
-		};
-	
+		}
+	};
+
+	public static Comparator<Earthquake> EquLocComparator = new Comparator<Earthquake>() {
+		public int compare(Earthquake arg0, Earthquake arg1) {
+			// TODO Auto-generated method stub
+			String quake1 = arg0.getPlace().toUpperCase();
+			String quake2 = arg1.getPlace().toUpperCase();
+
+			//ascending order
+			return quake1.compareTo(quake2);
+		}
+	};
+
 }

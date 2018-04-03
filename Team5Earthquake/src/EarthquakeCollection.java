@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -113,7 +112,8 @@ public class EarthquakeCollection {
             br = new BufferedReader(new FileReader(strFile));
 
             //pull the headers out since they are the first row
-            String headers = br.readLine();    		
+            @SuppressWarnings("unused")
+			String headers = br.readLine();    		
 
             while ((strLine= br.readLine()) != null) {
             		//split by a quotation, this is the only way to identify every place

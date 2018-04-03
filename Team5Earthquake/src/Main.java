@@ -5,8 +5,10 @@ import java.util.Scanner;
 
 public class Main {
 
+	private static Scanner input;
+
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
+		input = new Scanner(System.in);
 		System.out.println("Welcome to the searchquake command prompt. Type exit to leave, or help for commands.");
 		ArrayList<Earthquake> earthquakes = EarthquakeCollection.getFileInformation();
 		while(true) {
@@ -67,6 +69,19 @@ public class Main {
 				   }
 			}
 			
+			if(userInput.equals("printByPlace")) {
+				Collections.sort(earthquakes, Earthquake.EquLocComparator);
+				for(Earthquake eq: earthquakes){
+					System.out.println(eq);
+				   }
+			}
+			//status checker not functional yet, need to change status from boolean
+			if(userInput.equals("printByStatus")) {
+				//Collections.sort(earthquakes, Earthquake.EquStatusComparator);
+				for(Earthquake eq: earthquakes){
+					System.out.println(eq);
+				   }
+			}
 		}
 	}
 }
