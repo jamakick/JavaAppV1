@@ -20,10 +20,6 @@ public class EarthquakeCollection {
 		return "Number of Earthquakes: " + earthquakes.size();
 	}
 	
-	
-	
-	
-	
 //	public static ArrayList<Earthquake> SearchByLoc(String lat1, String long1, String lat2, String long2) {
 //		
 //		ArrayList<Earthquake> earthquakes = getFileInformation();
@@ -34,7 +30,7 @@ public class EarthquakeCollection {
 //		double longNum1 = Double.parseDouble(long1);
 //		double latNum2 = Double.parseDouble(lat2);
 //		double longNum2 = Double.parseDouble(long2);
-//		
+//  
 //	}
 	
 	
@@ -77,6 +73,7 @@ public class EarthquakeCollection {
 		
 		return datesBetween;
 	}
+	
 	
 	
 	public static ArrayList<Earthquake> getFileInformation(){
@@ -264,7 +261,7 @@ public class EarthquakeCollection {
                  }
             }
         }
-        
+
         //prints all earthquake objects
 //        for (Earthquake e:earthquakeList)
 //        	System.out.println(e);
