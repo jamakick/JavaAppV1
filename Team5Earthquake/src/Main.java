@@ -1,14 +1,11 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Welcome to the searchquake command prompt. Type exit to leave.");
+		System.out.println("Welcome to the searchquake command prompt. Type exit to leave, or help for commands.");
 		ArrayList<Earthquake> earthquakes = EarthquakeCollection.getFileInformation();
 		while(true) {
 			String userInput = input.next();
@@ -23,7 +20,11 @@ public class Main {
 			
 			if(userInput.equals("help")) {
 				
-				System.out.println(earthquakes);
+				System.out.println("Commands:");
+				System.out.println(" print - Prints out information for every earthquakes");
+				System.out.println(" summary - Print out information summarizing all earthquakes");
+				System.out.println(" printByDate - Takes two dates and gives earthquakes between the two dates");
+				System.out.println(" exit - Exit console");
 			}
 			
 			if(userInput.equals("summary")) {
@@ -33,7 +34,7 @@ public class Main {
 			
 			if(userInput.equals("printByDate")) {
 				
-				System.out.println("Print dates one line each");
+				System.out.println("Print first date, press enter and enter the second date: (yyyy-mm-dd)");
 				String first = input.next();
 				String second = input.next();
 				
