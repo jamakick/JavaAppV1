@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,27 +26,15 @@ public class EarthquakeCollection {
 		
 		ArrayList<Earthquake> statusMatch = new ArrayList<Earthquake>();
 		
-		if(status.equals("reviewed")) {
 			for (int i = 0; i < earthquakes.size(); i++) {
 				
-				boolean quakePlace = earthquakes.get(i).isStatus();
+				String quakePlace = earthquakes.get(i).getStatus();
 				
-				if(quakePlace) {
+				if(quakePlace.equals(status)) {
 						statusMatch.add(earthquakes.get(i));
 				}
 			}
-		}
-			
-
-		for (int i = 0; i < earthquakes.size(); i++) {
-			
-			boolean quakePlace = earthquakes.get(i).isStatus();
-			
-			if(quakePlace) {
-					placeMatch.add(earthquakes.get(i));
-			}
-		}
-		return placeMatch;
+		return statusMatch;
 	}
 	
 	public static ArrayList<Earthquake> SearchByPlace(String place) {
@@ -208,7 +195,7 @@ public class EarthquakeCollection {
 		double depthError;
 		double magError;
 		int magNst;
-		boolean status;
+		String status;
 		String locSource;
 		String magSource;
 		
@@ -333,13 +320,11 @@ public class EarthquakeCollection {
             			magNst = 0;
             		else
             			magNst = Integer.parseInt(vars[18]);
-            		//false
+            		//automatic
             		if (vars[19].equals(""))
-            			status = false;
-            		else if (vars[19].equals("automatic"))
-            			status = false;
+            			status = "null";
             		else
-            			status = true;
+            			status = vars[19];
             		//nc
             		if (vars[20].equals(""))
             			locSource = "null";

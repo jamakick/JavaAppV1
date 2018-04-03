@@ -27,6 +27,9 @@ public class Main {
 				System.out.println(" searchByLocation - Takes two latitudes and longitudes and gives earthquakes between the two coordinates. (Lat1, Long1, Lat2, Long2) format");
 				System.out.println(" searchByDepth - Takes two depths and gives earthquakes between them. (double)");
 				System.out.println(" searchByMag - Takes two magnitudes and gives earthquakes between them. (double)");
+				System.out.println(" searchByMagType - Takes a magnitude type and gives back earthquakes that match. (string) ");
+				System.out.println(" searchByPlace - Takes a place and gives back earthquakes that match the location. (string) ");
+				System.out.println(" searchByStatus - Takes a status and gives back earthquakes that match. (automatic or reviewed) ");
 				System.out.println(" exit - Exit console.");
 			}
 			
@@ -85,9 +88,10 @@ public class Main {
 			if(userInput.equals("searchByPlace")) {
 				
 				System.out.println("Print what place you would like to search for. (String)");
+				String blank = input.nextLine();
 				String place = input.nextLine();
 				
-				//System.out.println(EarthquakeCollection.SearchByMagType(magType));
+				System.out.println(EarthquakeCollection.SearchByPlace(place));
 			}
 			
 			if(userInput.equals("searchByStatus")) {
@@ -95,7 +99,7 @@ public class Main {
 				System.out.println("Print what status type you would like to search for. (String)");
 				String status = input.next();
 				
-				//System.out.println(EarthquakeCollection.SearchByMagType(magType));
+				System.out.println(EarthquakeCollection.SearchByStatus(status));
 			}
 			
 		}
