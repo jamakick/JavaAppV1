@@ -41,6 +41,15 @@ public class Main {
 				System.out.println(EarthquakeCollection.SearchByDate(first,second));
 			}
 			
+			if(userInput.equals("printByLocation")) {
+				
+				System.out.println("Enter first latitude and longitude, press enter and enter the second latitude and longitude");
+				String lat1 = input.next();
+				String long1 = input.next();
+				String lat2 = input.next();
+				String long2 = input.next();
+				
+			}
 			
 		}
 	}

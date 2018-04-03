@@ -21,6 +21,23 @@ public class EarthquakeCollection {
 	}
 	
 	
+	
+	
+	
+//	public static ArrayList<Earthquake> SearchByLoc(String lat1, String long1, String lat2, String long2) {
+//		
+//		ArrayList<Earthquake> earthquakes = getFileInformation();
+//		
+//		ArrayList<Earthquake> locBetween = new ArrayList<Earthquake>();
+//		
+//		double latNum1 = Double.parseDouble(lat1);
+//		double longNum1 = Double.parseDouble(long1);
+//		double latNum2 = Double.parseDouble(lat2);
+//		double longNum2 = Double.parseDouble(long2);
+//		
+//	}
+	
+	
 	public static ArrayList<Earthquake> SearchByDate(String string1, String string2) {
 		
 		ArrayList<Earthquake> earthquakes = getFileInformation();
