@@ -10,9 +10,10 @@ import java.util.Date;
 
 public class EarthquakeCollection {
 	
-	//you can't override the to string of an array list apparently, I will just make a new function
+//	You cannot override tostring on an array list
 //	@Override
 //	public String toString() {
+//		ArrayList<Earthquake> earthquakes = getFileInformation();
 //		return "Number of Earthquakes: " + earthquakes.size();
 //	}
 	
@@ -24,18 +25,33 @@ public class EarthquakeCollection {
 	
 	
 	
-//	public static ArrayList<Earthquake> SearchByLoc(String lat1, String long1, String lat2, String long2) {
-//		
-//		ArrayList<Earthquake> earthquakes = getFileInformation();
-//		
-//		ArrayList<Earthquake> locBetween = new ArrayList<Earthquake>();
-//		
-//		double latNum1 = Double.parseDouble(lat1);
-//		double longNum1 = Double.parseDouble(long1);
-//		double latNum2 = Double.parseDouble(lat2);
-//		double longNum2 = Double.parseDouble(long2);
-//		
-//	}
+	public static ArrayList<Earthquake> SearchByLoc(String lat1, String long1, String lat2, String long2) {
+		
+		ArrayList<Earthquake> earthquakes = getFileInformation();
+		
+		ArrayList<Earthquake> locBetween = new ArrayList<Earthquake>();
+		
+		double latNum1 = Double.parseDouble(lat1);
+		double longNum1 = Double.parseDouble(long1);
+		double latNum2 = Double.parseDouble(lat2);
+		double longNum2 = Double.parseDouble(long2);
+		
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			double latString = earthquakes.get(i).getLatitude();
+			double longString = earthquakes.get(i).getLongitude();
+			
+			if(latString >= latNum1 && latString <= latNum2) {
+				if(longString <= longNum1 && longString >= longNum2) {
+					locBetween.add(earthquakes.get(i));
+				}
+			}
+			
+		}
+		
+		return locBetween;
+		
+	}
 	
 	
 	public static ArrayList<Earthquake> SearchByDate(String string1, String string2) {
