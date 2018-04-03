@@ -195,5 +195,16 @@ public class Earthquake {
 			return quake1.compareTo(quake2);
 		}
 	};
+	
+	public static Comparator<Earthquake> EquDateComparator = new Comparator<Earthquake>() {
+		public int compare(Earthquake arg0, Earthquake arg1) {
+			// TODO Auto-generated method stub
+			String quake1 = arg0.getTime();
+			
+			String quake2 = arg1.getTime();
 
+			//ascending order
+			return quake1.compareTo(quake2);
+		}
+	};
 }

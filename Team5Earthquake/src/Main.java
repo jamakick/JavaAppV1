@@ -82,6 +82,13 @@ public class Main {
 					System.out.println(eq);
 				   }
 			}
+			
+			if(userInput.equals("printByDate")) {
+				Collections.sort(earthquakes, Earthquake.EquDateComparator);
+				for(Earthquake eq: earthquakes){
+					System.out.println(eq);
+				   }
+			}
 		}
 	}
 }
