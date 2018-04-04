@@ -335,7 +335,7 @@ public class EarthquakeCollection {
 		ArrayList<Earthquake> datesBetween = new ArrayList<Earthquake>();
 		
 		//define our simpledateformat that we can use to format and parse our dates and strings back and forth
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		//define our two dates
 		Date date1 = new Date();
@@ -343,8 +343,8 @@ public class EarthquakeCollection {
 		
 		//parse our dates
 		try {
-			date1 = sdf.parse(string1);
-			date2 = sdf.parse(string2);
+			date1 = sdf.parse(string1 + " 00:00:00");
+			date2 = sdf.parse(string2 + " 00:00:00");
 		} catch (ParseException e) {
 			//if our dates are incorrect, we tell them they aren't valid dates
 			System.out.println("Those are not valid dates");
@@ -353,22 +353,24 @@ public class EarthquakeCollection {
 		//loop earthquakes
 		for (int i = 0; i < earthquakes.size(); i++) {
 			//get the substring of our Time from earthquake, this matches our simpledateformat
-			String timeString = earthquakes.get(i).getTime().substring(0, 10);
+			String dateString = earthquakes.get(i).getTime().substring(0, 10);
+			String timeString = earthquakes.get(i).getTime().substring(11, 19);
 			
 			//define our earthquake date
 			Date timeDate = new Date();
 			
 			//parse our earthquake date
 			try {
-				timeDate = sdf.parse(timeString);;
+				timeDate = sdf.parse(dateString + " " + timeString);
 			} catch (ParseException e) {
 				//if we get an error here, we print the stacktrace
 				e.printStackTrace();
 			}
 			//we check to see if the earthquakes date is after the first date, but before the second date
-			if (timeDate.after(date1) && timeDate.before(date2))
+			if (timeDate.after(date1) && timeDate.before(date2)) {
 				//if it is, we add it to our list
-				datesBetween.add(earthquakes.get(i));	
+				datesBetween.add(earthquakes.get(i));
+			}
 		}
 		//return our list of earthquakes in between our two dates
 		return datesBetween;

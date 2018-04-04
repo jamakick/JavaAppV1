@@ -61,8 +61,10 @@ public class Main {
 				if(!EarthquakeCollection.SearchByDate(first,second).isEmpty())
 					System.out.println(EarthquakeCollection.SearchByDate(first,second));
 				//otherwise it says what the correct format is
-				else
+				else {
+					System.out.println(EarthquakeCollection.SearchByDate(first,second));
 					System.out.println("Format should be yyyy-mm-dd, yyyy-mm-dd");
+				}
 			}
 
 			//searchByLocation, takes 4 coordinates, two lats and two longs
@@ -163,9 +165,9 @@ public class Main {
 			}
 			//status checker not functional yet, need to change status from boolean
 			else if(userInput.equalsIgnoreCase("printByStatus")) {
-				//Collections.sort(earthquakes, Earthquake.EquStatusComparator);
+//				Collections.sort(earthquakes, Earthquake.EquStatusComparator);
 				for(Earthquake eq: earthquakes){
-					System.out.println(eq);
+					System.out.println(eq.getStatus());
 				   }
 			}
 			
