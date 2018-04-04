@@ -16,8 +16,122 @@ public class EarthquakeCollection {
 //		return "Number of Earthquakes: " + earthquakes.size();
 //	}
 	
+	/**
+	 * @param earthquakes
+	 * @return
+	 */
 	public static String arrayListToString(ArrayList<Earthquake> earthquakes) {
-		return "Number of Earthquakes: " + earthquakes.size();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Date earliestDate = new Date();
+		Date latestDate = new Date();
+		
+		try {
+			earliestDate = sdf.parse("2200-01-01");
+			latestDate = sdf.parse("1900-01-01");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		double largestLat = -2000f;
+		double smallestLat = 2000f;
+		double largestLong = -2000f;
+		double smallestLong = 2000f;
+		double totalDepth = 0f;
+		double totalMag = 0f;
+		ArrayList<String> magTypes = new ArrayList<String>();
+		int totalNst = 0;
+		double totalGap = 0f;
+		int earthquakeCount = 0;
+		int miningCount = 0;
+		int reviewCount = 0;
+		int autoCount = 0;
+		
+		
+		
+		for (int i = 0; i < earthquakes.size(); i++) {
+			
+			Earthquake earthquake = earthquakes.get(i);
+			
+			String timeString = earthquake.getTime().substring(0, 10);
+			
+			Date timeDate = new Date();
+			
+			try {
+				timeDate = sdf.parse(timeString);;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			if(timeDate.before(earliestDate))
+				earliestDate = timeDate;
+			if(timeDate.after(latestDate))
+				latestDate = timeDate;
+			
+			if((earthquake.getLatitude()) <= smallestLat)
+				smallestLat = earthquake.getLatitude();
+			if((earthquake.getLatitude()) >= largestLat)
+				largestLat = earthquake.getLatitude();
+			
+			if((earthquake.getLongitude()) <= smallestLong)
+				smallestLong = earthquake.getLongitude();
+			if((earthquake.getLongitude()) >= largestLong)
+				largestLong = earthquake.getLongitude();
+			
+			totalDepth += earthquake.getDepth();
+			totalMag += earthquake.getMag();
+			
+			String magType = earthquake.getMagType();
+			
+			if(!magTypes.contains(magType))
+				magTypes.add(magType);
+				
+			totalNst += earthquake.getNst();
+			totalGap += earthquake.getGap();
+			
+			String type = earthquake.getType();
+			String status = earthquake.getStatus();
+			
+			if(type.equals("earthquake"))
+				earthquakeCount++;
+			else
+				miningCount++;
+			
+			if(status.equals("reviewed"))
+				reviewCount++;
+			else
+				autoCount++;
+		}
+		
+		if(magTypes.contains("null"))
+			magTypes.remove("null");
+		
+		double avgDepth = totalDepth / earthquakes.size();
+		double avgMag = totalMag / earthquakes.size();
+		double avgNst = totalNst / earthquakes.size();
+		double avgGap = totalGap / earthquakes.size();
+		
+		String returnString = "Summary of Earthquake Collection: ";
+		returnString += "\n---------------------------------------------------------------------------------------------------------------------";
+		returnString += "\n Number of Earthquakes: " + earthquakes.size();
+		returnString += "\n Earliest Date: " + sdf.format(earliestDate) + " Latest Date: " + sdf.format(latestDate);
+		returnString += "\n Latitudes range from " + smallestLat + " to " + largestLat;
+		returnString += "\n Longitudes range from " + smallestLong + " to " + largestLong;
+		returnString += "\n Average Depth: " + String.format("%.3f", avgDepth);
+		returnString += "\n Average Magnitude: " + String.format("%.3f", avgMag) + "\n Magnitude Types: ";
+		
+		for (String s:magTypes)
+			returnString += s + " ";
+		
+		returnString += "\n Average Number of Stations Contributing: " + avgNst;
+		returnString += "\n Average Gap Between Stations: " + String.format("%.3f", avgGap);
+		returnString += "\n Amount of Earthquakes: " + earthquakeCount + " Amount of Mining Blasts: " + miningCount;
+		returnString += "\n Amount of Earthquakes reviewed: " + reviewCount + " Amount of Earthquakes automatically entered: " + autoCount;
+		returnString += "\n---------------------------------------------------------------------------------------------------------------------";
+		
+		return returnString;
 	}
 	
 	public static ArrayList<Earthquake> SearchByStatus(String status) {
@@ -77,8 +191,15 @@ public class EarthquakeCollection {
 		
 		ArrayList<Earthquake> magBetween = new ArrayList<Earthquake>();
 		
-		double magNum1 = Double.parseDouble(mag1);
-		double magNum2 = Double.parseDouble(mag2);
+		double magNum1 = 0f;
+		double magNum2 = 0f;
+		
+		try {
+			magNum1 = Double.parseDouble(mag1);
+			magNum2 = Double.parseDouble(mag2);
+		} catch(Exception e) {
+			System.out.println("Those are not valid magnitudes");
+		}
 
 		for (int i = 0; i < earthquakes.size(); i++) {
 			
@@ -97,8 +218,15 @@ public class EarthquakeCollection {
 		
 		ArrayList<Earthquake> depthBetween = new ArrayList<Earthquake>();
 		
-		double depthNum1 = Double.parseDouble(depth1);
-		double depthNum2 = Double.parseDouble(depth2);
+		double depthNum1 = 0f;
+		double depthNum2 = 0f;
+		
+		try {
+			depthNum1 = Double.parseDouble(depth1);
+			depthNum2 = Double.parseDouble(depth2);
+		} catch(Exception e) {
+			System.out.println("Those are not valid depths");
+		}
 
 		for (int i = 0; i < earthquakes.size(); i++) {
 			
@@ -117,10 +245,19 @@ public class EarthquakeCollection {
 		
 		ArrayList<Earthquake> locBetween = new ArrayList<Earthquake>();
 		
-		double latNum1 = Double.parseDouble(lat1);
-		double longNum1 = Double.parseDouble(long1);
-		double latNum2 = Double.parseDouble(lat2);
-		double longNum2 = Double.parseDouble(long2);
+		double latNum1 = 0f;
+		double longNum1 = 0f;
+		double latNum2 = 0f;
+		double longNum2 = 0f;
+		
+		try {
+			latNum1 = Double.parseDouble(lat1);
+			longNum1 = Double.parseDouble(long1);
+			latNum2 = Double.parseDouble(lat2);
+			longNum2 = Double.parseDouble(long2);
+		} catch(Exception e) {
+			System.out.println("Those aren't valid coordinates.");
+		}
 		
 		for (int i = 0; i < earthquakes.size(); i++) {
 			
@@ -152,7 +289,7 @@ public class EarthquakeCollection {
 			date2 = sdf.parse(string2);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Those are not dates");
 		}
 		
 		for (int i = 0; i < earthquakes.size(); i++) {
