@@ -1,6 +1,6 @@
-
 public class Earthquake {
 
+	//establish our variables that encompass the earthquake object
 	private String time = "";
 	private double latitude = 0f;
 	private double longitude = 0f;
@@ -24,9 +24,11 @@ public class Earthquake {
 	private String locSource = "";
 	private String magSource = "";
 	
+	//no-arg constructor
 	public Earthquake() {
 	}
 	
+	//constructor that takes every variable, and then sets the values of the object
 	public Earthquake (String time, double latitude, double longitude, double depth, double mag, String magType,
 			int nst, double gap, double dMin, double rms, String net, String id, String updated, String place,
 			String type, double horError, double depthError, double magError, 
@@ -55,6 +57,7 @@ public class Earthquake {
 		this.magSource = magSource;
 	}
 	
+	//getters 
 	public String getTime() {
 		return time;
 	}
@@ -143,6 +146,7 @@ public class Earthquake {
 		return magSource;
 	}
 
+	//override our toString method so when you print the earthquake object, you will see this information about it.
 	@Override
 	public String toString() {
 		return "\n\nEarthquake: \n Time: " + time + "\n Latitude: " + latitude + "\n Longitude: " + longitude +
@@ -153,15 +157,14 @@ public class Earthquake {
 				 + "\n Magnitude Error (km): " + magError + "\n Amount of Stations that Determined Magnitude: " + magNst + "\n Reviewed Status: " + status
 				 + "\n Location Source: " + locSource + "\n Magnitude Source: " + magSource;
 	}
-	
-	
-	public static void main(String[] args) {		
-		// Test Two Earthquakes
+	//Test Code
+//	public static void main(String[] args) {		
+//		// Test Two Earthquakes
 //		Earthquake earth1  = new Earthquake("2018-03-08T17:58:27.780Z", 33.4915f,
 //				-116.783f, 4.24f, 0.76f, "ml", 25, 48f, 0.08307f, 0.18f,
 //				"ci", "ci37890583", "2018-03-08T18:02:00.885Z",
 //				"9km NE of Aguanga, CA", "earthquake", 0.27f, 0.59f,
 //				0.17f, 22, "automatic", "ci", "ci");		
 //		System.out.println(earth1);	
-	}
+//	}
 }
