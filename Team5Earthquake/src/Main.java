@@ -163,9 +163,9 @@ public class Main {
 					System.out.println(eq);
 				   }
 			}
-			//status checker not functional yet, need to change status from boolean
+
 			else if(userInput.equalsIgnoreCase("printByStatus")) {
-//				Collections.sort(earthquakes, Earthquake.EquStatusComparator);
+				Collections.sort(earthquakes, Earthquake.EquStatusComparator);
 				for(Earthquake eq: earthquakes){
 					System.out.println(eq.getStatus());
 				   }

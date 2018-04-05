@@ -211,4 +211,15 @@ public class Earthquake {
 			return quake1.compareTo(quake2);
 		}
 	};
+	
+	public static Comparator<Earthquake> EquStatusComparator = new Comparator<Earthquake>() {
+		public int compare(Earthquake arg0, Earthquake arg1) {
+			// TODO Auto-generated method stub
+			String quake1 = arg0.getPlace().toUpperCase();
+			String quake2 = arg1.getPlace().toUpperCase();
+
+			//ascending order
+			return quake1.compareTo(quake2);
+		}
+	};
 }
