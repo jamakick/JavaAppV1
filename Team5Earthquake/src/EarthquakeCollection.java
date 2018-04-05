@@ -584,7 +584,7 @@ public class EarthquakeCollection {
             }
         }
 
-        //prints all earthquake objects
+        //prints all earthquake objects test code
 //        for (Earthquake e:earthquakeList)
 //        	System.out.println(e);
 //        	System.out.println();

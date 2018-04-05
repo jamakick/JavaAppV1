@@ -39,11 +39,11 @@ public class Main {
 				System.out.println(" searchByMagType - Takes a magnitude type and gives back earthquakes that match.");
 				System.out.println(" searchByPlace - Takes a place and gives back earthquakes that match the location.");
 				System.out.println(" searchByStatus - Takes a status and gives back earthquakes that match.");
-				System.out.println(" printByDate");
-				System.out.println(" printByDepth");
-				System.out.println(" printByMag");
-				System.out.println(" printByPlace");
-				System.out.println(" printByStatus");
+				System.out.println(" printByDate - Gives earthquakes where dates are in ascending order.");
+				System.out.println(" printByDepth - Gives earthquakes where depth is in ascending order.");
+				System.out.println(" printByMag - Gives earthquakes where magnitude is in ascending order.");
+				System.out.println(" printByPlace - Gives earthquakes where places are in alphabetical and numerical order.");
+				System.out.println(" printByStatus - Gives earthquakes in order of reviewed/automatic. ");
 				System.out.println(" exit - Exit console.");
 			}
 			//if the user enters summary, it will print the arrayList's toString that summarizes some of the data
