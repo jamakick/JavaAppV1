@@ -417,8 +417,15 @@ public class EarthquakeCollection {
 
         //try statement that reads our file
         try {
+        		try {
         	//opens the buffer reader on our csv file
             br = new BufferedReader(new FileReader(strFile));
+        		}
+        		catch (Exception e){
+        			System.out.println("The file does not exist.");
+        			System.exit(0);
+        		}
+        		
 
             //pull the headers out since they are the first row
             @SuppressWarnings("unused")
