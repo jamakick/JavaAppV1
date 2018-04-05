@@ -225,8 +225,8 @@ public class EarthquakeCollection {
 		ArrayList<Earthquake> magBetween = new ArrayList<Earthquake>();
 		
 		//define our two mag numbers so we can parse them
-		double magNum1 = 0f;
-		double magNum2 = 0f;
+		double magNum1 = -1000f;
+		double magNum2 = -1000f;
 		
 		//try statement that parses from a string to a double
 		try {
@@ -258,8 +258,8 @@ public class EarthquakeCollection {
 		ArrayList<Earthquake> depthBetween = new ArrayList<Earthquake>();
 		
 		//define our depths
-		double depthNum1 = 0f;
-		double depthNum2 = 0f;
+		double depthNum1 = -1000f;
+		double depthNum2 = -1000f;
 		
 		//parse our depths
 		try {
@@ -318,7 +318,7 @@ public class EarthquakeCollection {
 			//first we check if our earthquakes lat is in between our two latitude args
 			if(quakeLat >= latNum1 && quakeLat <= latNum2) {
 				//we then also check if the earthquake long is in between our two longitude args
-				if(quakeLong <= longNum1 && quakeLong >= longNum2) {
+				if(quakeLong >= longNum1 && quakeLong <= longNum2) {
 					//if both of these are true, we add it to our list
 					locBetween.add(earthquakes.get(i));
 				}
